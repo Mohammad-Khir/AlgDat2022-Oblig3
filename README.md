@@ -7,6 +7,14 @@ Oppgaven er levert av følgende student:
 
 # Oppgavebeskrivelse
 
-I oppgave 1 så gikk jeg frem ved å ...
+### Oppgave 1:
+Løste ved å implementere kode fra kilde Programkode 5.2.3 a som det står i oppgaveteksten.
+Vi starter med å opprette en node som blir en teller og en node som blir foreldre-noden til telleren.
+Verdien vi får inn i metoden blir sammenliknet med node-verdien vi
+er på og er den mindre flyttes noden til venstre barn. Er den større,
+flyttes telleren til høyre barn. Når det ikke er flere barn,
+er teller null og vi går ut av while-løkken. Her blir det avgjort om
+rot (foreldrenode) er null, da settes rot lik telleren. Har vi en
+rotnode med verdi, skal den nye noden settes lik enten høyre eller venstre barn i treet.
 
-I oppgave 2 så brukte jeg en ... til å ...
+### Oppgave 2:
