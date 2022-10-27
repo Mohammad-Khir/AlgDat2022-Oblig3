@@ -29,3 +29,29 @@ Er returverdien 1 går vi videre til høyre i treet.
 Når vi er ute av while-løkken returnerer den antallet forekomster (count).
 
 ### Oppgave 3
+Jeg hentet inspirasjon fra kompendiet "seksjon “5.1.7 Preorden, inorden og postorden”"
+hvor det var snakk om hvilke kriterier som gjelder ved PostOrden.
+I "FørstepostOrden" bruker jeg en while løkke som kjører til p
+ikke lenger er lik null. I while løkken, sjekkes det om p.venstre
+ikke er lik, så oppdateres p til p.venstre. Når det ikke er mulig å gå
+mer til venstre, sjekker jeg om det er går ann å gå til høyre.
+Når det ikke lenger er mulig å gå til høyre eller venstre,
+returneres p. Og dermed får jeg første node post orden, med p som rot.
+
+I "NestePostOrden" starter jeg med å se om p.forelder er lik null.
+Dersom positiv så retunerer jeg null, ettersom rot er den siste i
+postorden. Deretter sjekkes det om p er barn venstre eller høyre.
+Hvis p er et venstre barn, returnerer jeg p.forelder ettersom den er
+neste i postorden. Hvis p er et høyre barn, blir p.forelder neste verdi
+i postorden.
+Deretter sjekker jeg om p har, høyre søsken,
+og dersom positiv så kjøres førstePostOrden(p.forelder.høyre)
+for å finne første node.I "NestePostOrden" starter jeg med å se om p.forelder er lik null.
+Dersom positiv så retunerer jeg null, ettersom rot er den siste i
+postorden. Deretter sjekkes det om p er barn venstre eller høyre.
+Hvis p er et venstre barn, returnerer jeg p.forelder ettersom den er
+neste i postorden. Hvis p er et høyre barn, blir p.forelder neste verdi
+i postorden.
+Deretter sjekker jeg om p har, høyre søsken,
+og dersom positiv så kjøres førstePostOrden(p.forelder.høyre)
+for å finne første node.
