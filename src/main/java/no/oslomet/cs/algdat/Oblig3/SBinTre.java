@@ -1,6 +1,6 @@
 package no.oslomet.cs.algdat.Oblig3;
 
-
+import java.util.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.StringJoiner;
@@ -82,8 +82,32 @@ public class SBinTre<T> {
         return antall == 0;
     }
 
-    public boolean leggInn(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+    public boolean leggInn(T verdi) {   // Brukte programkode 5.2.3 fra kompendiet
+
+        Objects.requireNonNull(verdi, "Ulovlig med nullverdier!");
+
+        // Her skal vi finne ut hvor verdien skal legges
+        Node<T> p = rot, q = null;               // p starter i roten
+        int cmp = 0;                             // hjelpevariabel
+
+        while (p != null)       // fortsetter til p er ute av treet
+        {
+            q = p;                                 // q er forelder til p
+            cmp = comp.compare(verdi,p.verdi);     // bruker komparatoren
+            p = cmp < 0 ? p.venstre : p.høyre;     // flytter p
+        }
+        // p er nå null, dvs. ute av treet, q er den siste vi passerte
+
+        // Her skal vi legge verdien
+        p = new Node<>(verdi,q);                   // oppretter en ny node med refransen til sin forelder
+
+        if (q == null) rot = p;                  // p blir rotnode
+        else if (cmp < 0) q.venstre = p;         // venstre barn til q
+        else q.høyre = p;                        // høyre barn til q
+
+        endringer++;                             // en endring mer i treet
+        antall++;                                // én verdi mer i treet
+        return true;                             // vellykket innlegging
     }
 
     public boolean fjern(T verdi) {
