@@ -55,3 +55,15 @@ i postorden.
 Deretter sjekker jeg om p har, høyre søsken,
 og dersom positiv så kjøres førstePostOrden(p.forelder.høyre)
 for å finne første node.
+
+### Oppgave 4
+Ooppgave bruker to metodder.
+Den første skal skrive ut verdien i postorden uten bruk av rekursiv eller stack.
+Jeg brukte samme metodene som ble brukt i oppgave 3.
+Først finner verdi i første postorden, så finner verdiene i neste post
+i samme rekeføle osv. Jeg brukte oppgave.utførOppgave i den delen.
+
+Den andre metode skal skrive ut verdien ved hjelp av rekrusiv kall
+som skal treversere treet i postOrden rekkefølge. 
+Først sjekker om p.venstre ikke er null, så lager rekursivt kall på metoden og gjøre det
+samme med høyre del. så skriver ut verdiene i postOrden i riktig rekkefølge.
