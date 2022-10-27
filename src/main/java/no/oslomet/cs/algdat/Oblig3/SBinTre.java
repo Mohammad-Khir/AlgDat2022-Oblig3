@@ -119,7 +119,7 @@ public class SBinTre<T> {
     }
 
     public int antall(T verdi) {
-        if(!inneholder(verdi)) return 0;    //Hvis verdi ikke er treet
+        if(!inneholder(verdi)) return 0;    //Hvis verdi ikke er treet (null er ikke i treet)
         Node<T> p = rot;                    // p starter i roten
         int count = 0;                      // verdi-antall
         while (p != null){
