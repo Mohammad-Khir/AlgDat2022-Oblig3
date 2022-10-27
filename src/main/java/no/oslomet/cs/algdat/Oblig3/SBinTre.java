@@ -171,7 +171,24 @@ public class SBinTre<T> {
     }
 
     public void postorden(Oppgave<? super T> oppgave) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        // sjekker om treet er tom!
+        if (tom()) return;
+        // flytter p til den første i postorden.
+        Node<T> p = rot;
+        // Sjekker første postPosisjon, samme metode som førstPostorden.
+        while (true)
+        {
+            if (p.venstre != null) p = p.venstre;      // sjekker venstre del.
+            else if (p.høyre != null) p = p.høyre;     // sjekker høyre del.
+            else break;
+        }
+        // utfører oppgave så lenge p ikke er null.
+        while (p!=null){
+            // bruker utføroppgave for å skrive ut verdi.
+            oppgave.utførOppgave(p.verdi);
+            // bruker neste postorden for å skrive verdiene i neste post osv.
+            p=nestePostorden(p);
+        }
     }
 
     public void postordenRecursive(Oppgave<? super T> oppgave) {
@@ -179,7 +196,18 @@ public class SBinTre<T> {
     }
 
     private void postordenRecursive(Node<T> p, Oppgave<? super T> oppgave) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        if(p == null) return;
+
+        // sjekker venstre del for p. hvis ikke er null, lager rekursiv kall på metoden postordenRekrusiv.
+        if (p.venstre != null){
+            postordenRecursive(p.venstre,oppgave);
+        }
+        // sjekker høyre del for p. hvis ikke er null, lager rekursiv kall på metoden postordenRekrusiv.
+        if (p.høyre != null){
+            postordenRecursive(p.høyre,oppgave);
+        }
+        // skriver ut verdien til p.
+        oppgave.utførOppgave(p.verdi);
     }
 
     public ArrayList<T> serialize() {
