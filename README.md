@@ -18,6 +18,7 @@ rot (foreldrenode) er null, da settes rot lik telleren. Har vi en
 rotnode med verdi, skal den nye noden settes lik enten høyre eller venstre barn i treet.
 
 ### Oppgave 2
+Jeg brukte samme ide som er i Avsnitt 5.2.6 oppgave2 i kompendiet.
 Oppretter node som starter i roten som blir en teller
 "nodeViErPå" og en teller for antall forekomster. Lager en while-løkke
 som itererer så lenge nodeViErPå ikke lik null. For hver iterasjon

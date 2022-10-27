@@ -138,11 +138,36 @@ public class SBinTre<T> {
     }
 
     private static <T> Node<T> førstePostorden(Node<T> p) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        // Kjører en while løkke så lenge p har en verdi.
+        while (p != null) {
+            // hvis p.venstre ikke er lik null, setter vi p.venstre til å være p.
+            if (p.venstre != null) {
+                p = p.venstre;
+            }
+            // hvis p.høyre ikke er lik null, setter vi p.høyre til å være p.
+            else if (p.høyre != null) {
+                p = p.høyre;
+                // hvis ingen, returnerer p som første post orden.
+            } else {
+                return p;
+            }
+        }
+        return null;
     }
 
     private static <T> Node<T> nestePostorden(Node<T> p) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        //sjekkes om p.forelder er lik null.
+        if (p.forelder == null) {
+            return null;
+        }
+        //sjekkes det om p er barn venstre eller høyre.
+        if (p.forelder.høyre == p){
+            return p.forelder;
+        } else if (p.forelder.høyre != null){ //sjekker om p har høyre søsken
+            return førstePostorden(p.forelder.høyre);
+        } else {
+            return p.forelder;
+        }
     }
 
     public void postorden(Oppgave<? super T> oppgave) {
