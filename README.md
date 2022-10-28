@@ -67,3 +67,15 @@ Den andre metode skal skrive ut verdien ved hjelp av rekrusiv kall
 som skal treversere treet i postOrden rekkefølge. 
 Først sjekker om p.venstre ikke er null, så lager rekursivt kall på metoden og gjøre det
 samme med høyre del. så skriver ut verdiene i postOrden i riktig rekkefølge.
+
+### Oppgave 5
+oppgaven er to deler. Den første skal gjøre binørtreet til et array.
+I denne metoden serialize brukte ArrayDeque. Først legger til rot først
+i køen, så bruker en while løkke for å traversere gjnnom treet og legger inn verdien i
+arrayet. Den sjekker først current.venstre hvis ikke null, legger verdiene inn i køen, og
+gjør det samme med høyre del. til slutt legger til alle verdiene og returnerer list
+med verdie fra arrayet.
+
+Den andre metoden deserialize gjør det motsatte. Den skal lage et tree fra
+arrayet. Først oppretter et tre. Så bruker en for løkke for å loope gjennom arrayet og legger inn verdiene
+fra areayet inn i treet vha legginn metoden. Til slutt skal den returnere treet med alle verdiene.
