@@ -211,11 +211,41 @@ public class SBinTre<T> {
     }
 
     public ArrayList<T> serialize() {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        // Oppretter en queue (ArrayDeque)
+        Deque<Node> queue = new ArrayDeque<Node>();
+        // Oppdateer og legger rot til den første i køen.
+        queue.addFirst(rot);
+        // Oppretter Arrayalist for å legge verdiene inn i listen fra treet.
+        ArrayList<T> list = new ArrayList<>();
+
+        // kjører while løkke så lenge queue ikke er tomt.
+
+        while (!queue.isEmpty()){
+            //Tar ut først noden fra køen.
+            Node<T> current  = queue.remove();
+
+            // hvis ikke null, legger til current sin venstre barn.
+            if (current.venstre != null){
+                queue.addLast(current.venstre);
+            }
+            // Legger til current sin høyre barn
+            if (current.høyre != null){
+                queue.addLast(current.høyre);
+            }
+            // legger til alle verdiene i listen.
+            list.add(current.verdi);
+        }
+        return list;
     }
 
     static <K> SBinTre<K> deserialize(ArrayList<K> data, Comparator<? super K> c) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        // Oppretter et tre.
+        SBinTre<K> tre = new SBinTre<>(c);
+        //looper gjennom arrayet og legger inn verdien i treet, vha leggInn metoden.
+        for (K verdi : data){
+            tre.leggInn(verdi);
+        }
+        return tre;
     }
 
 
