@@ -2,7 +2,9 @@
 
 Denne oppgaven er en innlevering i Algoritmer og Datastrukturer. 
 Oppgaven er levert av følgende student:
-* Navn Navnesen, S123456, s123456@oslomet.no
+* Mohammad Khir Khaled Almohammad
+* S343988 
+* s343988@oslomet.no
 
 
 # Oppgavebeskrivelse
@@ -79,3 +81,24 @@ med verdie fra arrayet.
 Den andre metoden deserialize gjør det motsatte. Den skal lage et tree fra
 arrayet. Først oppretter et tre. Så bruker en for løkke for å loope gjennom arrayet og legger inn verdiene
 fra areayet inn i treet vha legginn metoden. Til slutt skal den returnere treet med alle verdiene.
+
+### Oppgave 6
+Fjern
+kopierte jeg fjern-metoden koden rett fra kompendiet.
+Det jeg endret på av koden var å gi "foreldre" riktig referanse, og sjekket om kode ga nullpoint.
+- Sjekker om verdi == null (om ja, returner false, ettsom tre ikke har null-verdier) - Går gjennom nodene i treet,
+  deretter sammenligner verdiene, og hva som skal bort - Sjekker om 1)to barn 2)ingen barn 3)
+  kun ett barn, i disse tilfellene fjernes noden
+
+fjernAlle
+Bruker antall(T verdi) og fjern-metoden
+For-løkke som kjører så mange ganger som den er i tre
+Returnerer antall
+Trekker antall noder fjernet fra antall
+
+nullstill
+Denne metoden skal nulle alt i treet inkludert alle pekere og verdier. 
+Dette skjer rekursivt ved hjelp av metoden nullstill(Node<T> p).
+Ved hjelp av metoden sjekker først om v.subtreet ikker er null, og setter den til null.
+Vi gjør det samme med høyre del. til slutt setter veriden til null.
+I nullstill metoden kaller vi nullstill(Node<T> p) og setter rot = null og antall = 0.
