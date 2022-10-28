@@ -111,11 +111,80 @@ public class SBinTre<T> {
     }
 
     public boolean fjern(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+
+        if(verdi == null) return false;
+
+        Node<T> p = rot;
+        Node<T> q = null;
+
+        while(p != null) {
+            int cmp = comp.compare(verdi, p.verdi);
+            if(cmp < 0) {
+                q = p;p = p.venstre;
+            } else if(cmp > 0) {
+                q = p;p = p.høyre;
+            } else break;
+        }
+
+        if(p == null) {
+            return false;
+        }
+        if(p.venstre == null || p.høyre == null) {
+            Node<T> b = p.venstre != null ? p.venstre : p.høyre;
+            if(p == rot) {
+                rot = b;
+                if(b != null){
+                    b.forelder = null;
+                }
+            } else if(q.venstre == p) {
+                q.venstre = b;
+                if(b != null){
+                    b.forelder = q;
+                }
+            } else {
+                q.høyre = b;
+                if(b != null) {
+                    b.forelder = q;
+                }
+            }
+
+            p.forelder = p.venstre = p.høyre = null;
+            p.verdi = null;
+        } else {
+            Node<T> r = p.høyre;
+            Node<T> s = p;
+
+            while(r.venstre != null) {
+                s = r; r = r.venstre;
+            }
+
+            p.verdi = r.verdi;
+            if(s != p) {
+                s.venstre = r.høyre;
+            } else{
+                s.høyre = r.høyre;
+            }
+            if(r.høyre != null) {
+                r.høyre.forelder = s;
+            }
+            r.forelder = r.høyre = null;
+            r.verdi = null;
+        }
+        antall--;
+        endringer++;
+        return true;
+
     }
 
     public int fjernAlle(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+
+        int ant = antall(verdi), teller = 0;
+        for (int i = 0; i<ant;i++) {
+            fjern(verdi);
+            teller++;
+        }
+        antall = antall-teller;
+        return teller;
     }
 
     public int antall(T verdi) {
@@ -134,7 +203,21 @@ public class SBinTre<T> {
     }
 
     public void nullstill() {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        if (!tom()) {
+            nullstill(rot);
+            rot = null; antall = 0;
+        }
+    }
+    private void nullstill(Node<T> p){
+        if (p.venstre != null){
+            nullstill(p.venstre);
+            p.venstre = null;
+        }
+        if (p.høyre != null){
+            nullstill(p.høyre);
+            p.høyre = null;
+        }
+        p.verdi = null;
     }
 
     private static <T> Node<T> førstePostorden(Node<T> p) {
